@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  electricity_price:
+    hostname: ${HOSTNAME}_electricity_price
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: electricity_price
+    image: electricity_price_i
+    container_name: electricity_price_c
+    volumes:
+    - ${PATH_TO_MOUNTSPACE}
+    devices:
+    - "/dev/snd:/dev/snd"
+    tty: true
+    stdin_open: true
+    privileged: true
